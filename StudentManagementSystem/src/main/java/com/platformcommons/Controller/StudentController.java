@@ -22,6 +22,7 @@ import com.platformcommons.Entities.Student;
 import com.platformcommons.Exceptions.AdminException;
 import com.platformcommons.Exceptions.StudentExceptions;
 import com.platformcommons.Models.StudentDTO;
+import com.platformcommons.Models.StudentDTOupdate;
 import com.platformcommons.Services.StudentService;
 
 @RestController
@@ -42,7 +43,7 @@ public class StudentController {
     
     @PutMapping("/{studentId}")
     public ResponseEntity<Student> updateStudentProfile(@PathVariable Long studentId,
-                                                       @RequestBody StudentDTO updatedStudent) {
+                                                       @RequestBody StudentDTOupdate updatedStudent) {
         try {
             Student updatedStudentProfile = studentService.updateStudentProfile(studentId, updatedStudent);
             return  new  ResponseEntity<>(updatedStudentProfile, HttpStatus.ACCEPTED);

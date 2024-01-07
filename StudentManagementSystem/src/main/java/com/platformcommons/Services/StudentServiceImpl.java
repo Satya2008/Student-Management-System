@@ -11,12 +11,15 @@ import com.platformcommons.Entities.Course;
 import com.platformcommons.Entities.Student;
 import com.platformcommons.Exceptions.StudentExceptions;
 import com.platformcommons.Models.StudentDTO;
+import com.platformcommons.Models.StudentDTOupdate;
 import com.platformcommons.Repository.CourseRepository;
 import com.platformcommons.Repository.StudentRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
@@ -29,15 +32,18 @@ public class StudentServiceImpl implements StudentService {
     private ModelMapper modelMapper;
 
     @Override
-    public Student updateStudentProfile(Long studentId, StudentDTO updatedStudent) throws StudentExceptions {
+    public Student updateStudentProfile(Long studentId, StudentDTOupdate updatedStudent) throws StudentExceptions {
         try {
+        
             Student existingStudent = studentRepository.findById(studentId)
                     .orElseThrow(() -> new EntityNotFoundException("Student not found with id: " + studentId));
 
             modelMapper.map(updatedStudent, existingStudent);
-
+        
             return studentRepository.save(existingStudent);
+           
         } catch (Exception e) {
+        	
             throw new StudentExceptions("Error while updating student profile");
         }
     }
