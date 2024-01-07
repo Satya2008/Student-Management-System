@@ -1,0 +1,15 @@
+package com.platformcommons.Services;
+
+import java.util.List;
+
+import com.platformcommons.Entities.Student;
+import com.platformcommons.Models.StudentDTO;
+
+public interface StudentService {
+   
+	    void admitStudent(StudentDTO studentDTO);
+	    List<Student> getStudentsByName(String name);
+	    void assignCoursesToStudent(String studentCode, List<Long> courseIds);
+	  
+	
+}

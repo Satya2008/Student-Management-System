@@ -1,0 +1,7 @@
+//package com.platformcommons.Services;
+//
+//import com.platformcommons.Entities.Enrollment;
+//
+//public interface EnrollmentService {
+//	 Enrollment enrollStudentInCourse(Long studentId, Long courseId);
+//}

@@ -1,0 +1,5 @@
+package com.platformcommons.Models;
+
+public class StudentDTO {
+
+}

@@ -1,0 +1,47 @@
+package com.platformcommons.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.platformcommons.Entities.Course;
+import com.platformcommons.Entities.Student;
+import com.platformcommons.Models.StudentDTO;
+import com.platformcommons.Services.StudentService;
+
+@RestController
+@RequestMapping("/student")
+public class StudentController {
+
+	
+	@Autowired
+	private StudentService studentService;
+	
+	  @PutMapping("/{studentId}")
+	    public ResponseEntity<Student> updateStudentProfile(@PathVariable Long studentId,
+	                                                       @RequestBody StudentDTO updatedStudent) {
+	        Student updatedStudentProfile = studentService.updateStudentProfile(studentId, updatedStudent);
+	        return ResponseEntity.ok(updatedStudentProfile);
+	    }
+
+	    @GetMapping("/{studentId}/courses")
+	    public ResponseEntity<List<Course>> getAssignedCourses(@PathVariable Long studentId) {
+	        List<Course> assignedCourses = studentService.getAssignedCourses(studentId);
+	        return ResponseEntity.ok(assignedCourses);
+	    }
+
+	    @DeleteMapping("/{studentId}/courses/{courseId}")
+	    public ResponseEntity<Void> leaveCourse(@PathVariable Long studentId, @PathVariable Long courseId) {
+	        studentService.leaveCourse(studentId, courseId);
+	        return ResponseEntity.noContent().build();
+	    }
+	
+}

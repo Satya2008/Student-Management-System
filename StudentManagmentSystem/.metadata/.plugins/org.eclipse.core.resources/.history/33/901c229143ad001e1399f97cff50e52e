@@ -1,0 +1,10 @@
+package com.platformcommons.Services;
+
+import java.util.List;
+
+import com.platformcommons.Entities.StudentAddress;
+
+public interface StudentAddressService {
+	     StudentAddress addStudentAddress(Long studentId, StudentAddress studentAddress);
+	    List<StudentAddress> getStudentAddresses(Long studentId);
+}

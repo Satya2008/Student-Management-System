@@ -1,0 +1,42 @@
+package com.platformcommons.Services;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.platformcommons.Entities.Role;
+import com.platformcommons.Entities.Student;
+import com.platformcommons.Models.StudentAddressDTO;
+import com.platformcommons.Models.StudentDTO;
+import com.platformcommons.Repository.StudentRepository;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+  
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
+	
+	@Override
+	public Student admitStudent(StudentDTO studentDTO, StudentAddressDTO studentAddressDTO) {
+		
+
+		 Student student = modelMapper.map(studentDTO, Student.class);
+      
+        student.setRole(Role.STUDENT);
+
+        return studentRepository.save(student);
+	}
+
+	@Override
+	public List<Student> getStudentsByName(String studentName) {
+//		  List<Student> students = studentRepository.findByStudentName(studentName);
+		return null;
+	}
+
+}

@@ -1,0 +1,69 @@
+package com.platformcommons.Services;
+
+
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.platformcommons.Entities.Role;
+import com.platformcommons.Entities.Student;
+import com.platformcommons.Entities.StudentAddress;
+import com.platformcommons.Models.StudentAddressDTO;
+import com.platformcommons.Models.StudentDTO;
+import com.platformcommons.Repository.StudentAddressRepository;
+import com.platformcommons.Repository.StudentRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class AdminServiceImpl implements AdminService {
+  
+
+    @Autowired
+    private StudentRepository studentRepository;
+    
+    @Autowired
+    private StudentAddressRepository studentAddressRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
+	
+	@Override
+	public Student admitStudent(StudentDTO studentDTO) {
+		
+
+		 Student student = modelMapper.map(studentDTO, Student.class);
+		 
+      
+        student.setRole(Role.STUDENT);
+         
+        return studentRepository.save(student);
+	}
+   
+	@Override
+	public Student addMoreAddressOfstudent(Long studentId, StudentAddressDTO studentAddressDTO) {
+		
+		 StudentAddress studentAddress = modelMapper.map(studentAddressDTO, StudentAddress.class);
+		   
+		 Student student  = studentRepository.findById(studentId).get();
+		 student.getAddresses().add(studentAddress);
+		 studentRepository.save(student);
+		return student;
+	}
+	
+	
+
+
+	@Override
+	public List<Student> getStudentsByName(String studentName) {
+//		  List<Student> students = studentRepository.findByStudentName(studentName);
+		return null;
+	}
+
+
+
+}

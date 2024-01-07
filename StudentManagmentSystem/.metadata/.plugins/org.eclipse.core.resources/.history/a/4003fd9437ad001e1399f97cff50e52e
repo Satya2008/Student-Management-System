@@ -1,0 +1,8 @@
+package com.platformcommons.Exceptions;
+
+public class Snippet {
+	public static void main(String[] args) {
+		StudentExceptions
+	}
+}
+

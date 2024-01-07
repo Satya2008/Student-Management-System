@@ -1,0 +1,37 @@
+package com.platformcommons.Services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.platformcommons.Entities.Course;
+import com.platformcommons.Entities.Student;
+
+@Service 
+public class StudentServiceImpl implements StudentService {
+
+	@Override
+	public Student updateStudentProfile(Long studentId, Student updatedStudent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Course> getAssignedCourses(Long studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void leaveCourse(Long studentId, Long courseId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Student> getStudentsByName(String studentName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

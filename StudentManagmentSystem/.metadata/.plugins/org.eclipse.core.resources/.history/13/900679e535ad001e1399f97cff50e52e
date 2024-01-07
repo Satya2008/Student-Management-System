@@ -1,0 +1,9 @@
+package com.platformcommons.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.platformcommons.Entities.Enrollment;
+
+public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
+    
+}
