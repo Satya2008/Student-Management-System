@@ -1,8 +1,0 @@
-package com.platformcommons.Services;
-
-import com.platformcommons.Entities.Course;
-
-public interface CourseService {
-	   Course uploadCourseDetails(Course course);
-	    void assignCoursesToStudent(Long studentId, Long courseIds);
-}

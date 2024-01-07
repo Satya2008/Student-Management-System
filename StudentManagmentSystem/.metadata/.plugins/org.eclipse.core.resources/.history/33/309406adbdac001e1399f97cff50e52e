@@ -1,5 +1,0 @@
-package com.platformcommons.Services;
-
-public interface StudentAddressService {
-
-}
