@@ -32,6 +32,12 @@ The Student Management System is a Spring Boot-based application designed to str
 
 ## Project Structure
 
+
+
+![Screenshot (188)](https://github.com/Satya2008/Student-Management-System/assets/119415073/bdfc5ba3-c3d7-4cf9-b3f9-70b2f6c2826a)
+
+
+
 The project follows a modular structure with distinct layers:
 - **Entity Layer:** Contains the JPA entities representing the data model.
 - **Repo Layer:** Includes repositories for database operations.
